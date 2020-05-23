@@ -57,11 +57,16 @@ export class HeroesService {
     ];
 
   constructor(){
-    console.log("servicio listo para usarse")
+    console.log("servicio listo para usarse");
   }
 
   getHeroes() : Heroe[]{ // devolver un arreglo de tipo Heroe
     return this.heroes;
+  }
+
+  getHeroe(id: number){
+   // return this.heroes.filter( (heroe,i) => i === id);
+   return this.heroes[id];
   }
 
 }
