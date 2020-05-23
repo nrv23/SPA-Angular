@@ -69,6 +69,25 @@ export class HeroesService {
    return this.heroes[id];
   }
 
+  buscarHeroe(termino: string): Heroe[]{
+    let heroesArr: Heroe[] = [];
+    //pasar el termino a minúscula
+    termino = termino.toLowerCase();
+
+    for(let i =0; i < this.heroes.length; i++){ // el in recorre como un for normal, enviandole el indice a cada iteraacion,
+      // el of recorre como un foreach
+      let heroe = this.heroes[i];
+      let nombre = heroe.nombre.toLowerCase();;
+
+      if(nombre.indexOf(termino) >= 0) { 
+        //indexOf esa funcion retorna 0 si el termino que se busca esta dentro del string 
+        heroe.idx = i;
+        heroesArr.push(heroe);
+      }
+    }
+
+    return heroesArr;
+  }  
 }
 
 
@@ -78,5 +97,6 @@ export interface Heroe { // se puede utilizar en otros
   bio: string,
   img: string,
   aparicion: string,
-  casa: string
+  casa: string;
+  idx?: number; // propiedad es opcional por llevar el signo de pregunta
 }

@@ -28,8 +28,16 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar héroe" aria-label="Search" (keyup.enter)="buscarHeroe(txtBuscarHeroe.value)" #txtBuscarHeroe>
+
+      <!-- 
+
+        (keyup.enter) se va ejecutar el evento keyup cuando se presione la tecla enter
+         el #txtBuscarHeroe hace una referencia al campo de texto donde le estoy poniendo ese id
+         asi que si envio el #txtBuscarHeroe es como enviar la referencia del campo como si fuera usando las funciones del dom
+         para selecciona el campo
+      -->
+      <button (click)="buscarHeroe(txtBuscarHeroe.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
     </form>
   </div>
 </nav>

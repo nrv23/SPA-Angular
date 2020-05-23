@@ -2,21 +2,21 @@
 <hr>
 
 <div class="card-columns" >
-  <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i = index">
-    <img [src]="heroe.img" class="card-img-top" [alt]="heroe.nombre">
-    <div class="card-body">
-     <h5 class="card-title">{{heroe.nombre}}</h5>
-     <p class="card-text">{{heroe.bio}}</p>
-     <p class="card-text"><small class="text-muted">{{heroe.aparicion}}</small></p>
-     <button (click)="verHeroe(i)" type="button" name="button" class="btn btn-outline-primary btn-block">
-       Ver más...
-     </button>
-    <!-- <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary"> El segundo parametro del router link es 
-      el parametro que se va pasar por la url del componente, en este caso es el index de la array
-        ver más... 
-     </a>-->
-    </div>
-  </div>
+  <!-- *ngFor="let heroe of heroes; let i = index" -->
+  <app-heroe-tarjeta (heroeSeleccionado)="verHeroe($event)" [heroe]="elemento" [index]="i" *ngFor="let elemento of heroes; let i = index"></app-heroe-tarjeta>
+  <!-- al utilizar los @input y usar [heroe]="elemento" le estoy diciendo al componente app-heroe-tarjeta
+    que le estoy enviando una variable elemento qu contiene un objeto de tipo heroe para que el componente
+    lo renderice.
+    La varible entre parentesis es la que recibe el componente y lo que esta dentro de comillas es el valor
+    (heroeSeleccionado)="verHeroe($event)" este evento es el evento personalizado desde el componente heroe-tarjeta
+    // ese evento va llamar la funcion ver heroe del componente padre heroes-component 
+    emitiendo el numero indice del objeto del array heroes, usando una  funcion que se llama verHeroe igual que la
+    funcion verHeroe del componente padre y el componente padre recibe el indice y renderiza el heroe
+  -->
+</div>
+
+
+
 
 <!--Cuando una propiedad se mete entre [] es  porque
 el valor lo va manejar angular

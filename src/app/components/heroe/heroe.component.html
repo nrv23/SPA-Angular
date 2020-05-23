@@ -1,5 +1,11 @@
-<h1 class="animated fadeIn">Nombre {{heroe.nombre}} <small>{{heroe.aparicion}}</small></h1>
+<h1 class="animated fadeIn">{{heroe.nombre | uppercase}} <small>({{heroe.aparicion | date:'y'}})</small></h1>
 <hr>
+<!--
+	Utiizar los pipes.
+	Los pipes basicamente son funciones que transforman la informamcion que se muestra por el html
+	para pasarle parametros a los pipes se pone el : y luego entre comillas simples se pasa el parametro
+	a el pipe
+-->
 <div class="row animated fadeIn fast">
 	<div class="col-md-4">
 		<img [src]="heroe.img" class="img-fluid" [alt]="heroe.nombre">
